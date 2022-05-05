@@ -1,0 +1,354 @@
+\documentclass[12pt]{article}
+\usepackage{geometry}
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{fancyhdr}
+\usepackage{graphicx}
+\usepackage{titlesec}
+
+
+\setlength{\headheight}{15.2pt}
+\setcounter{secnumdepth}{4}
+
+\titleformat{\paragraph}
+{\normalfont\normalsize\bfseries}{\theparagraph}{1em}{}
+\titlespacing*{\paragraph}
+{0pt}{3.25ex plus 1ex minus .2ex}{1.5ex plus .2ex}
+
+\rfoot{Pg: \thepage}
+
+\geometry{
+   a4paper,
+   left = 20mm,
+   top = 20mm,
+}
+\begin{document}
+\thispagestyle{empty}
+
+\section*{}
+{\LARGE\makebox[\textwidth]{\textbf{KATHMANDU UNIVERSITY}}}
+
+\centerline{Department of Computer Science and Engineering}
+\centerline{Dhulikhel,Kavre}
+\begin{figure}[h]
+    \centerline{\includegraphics[width=50.546mm,height=50.546mm]{KU_Logo.png}}
+\end{figure}
+
+\centerline{\textbf{A Project Report}}
+\centerline{on}
+\centerline{\underline{\textbf{"Distributed Library"}}}
+
+\vspace*{12mm}
+
+\centerline{\textbf{[Code No. : COMP 207]}}
+\centerline{(For partial fulfillment of 2nd Year/ 4th Semester in Computer Science)}
+
+\vspace*{10mm}
+
+\centerline{\textbf{Submitted by}}
+
+\centerline{\textbf{Rabin Bhandari(Roll No. 6)}}
+\centerline{\textbf{Susil Raj Neupane(Roll No. 39)}}
+\centerline{\textbf{Aayush Pokharel(Roll No. 43)}}
+\centerline{\textbf{Bijen Rayamajhi(Roll No. 48)}}
+
+
+\vspace*{16mm}
+
+
+\centerline{\textbf{Submitted to}}
+\centerline{\underline{\textbf{Project Cordinator}}}
+\centerline{\textbf{Pranita Karki}}
+\centerline{\textbf{Dept of Computer Science and Engineering}}
+\vspace*{10mm}
+
+\centerline{\textbf{Submission Date: 6th May, 2022}}
+
+\clearpage
+\thispagestyle{empty}
+\vspace*{10mm}
+\centerline{\textbf{\LARGE{Bonafide Certificate}}}
+\vspace*{30mm}
+\centerline{\textbf{\Large{This project work on “Canteen Management System” is the}}} 
+\vspace*{2mm}
+\centerline{\textbf{\Large{bonafide work of}}}
+\vspace*{2mm}
+\centerline{\textbf{\Large{"}}}
+\centerline{\textbf{\Large{Aayush Pokharel(Roll No. 43)}}}
+\centerline{\textbf{\Large{Susil Raj Neupane(Roll No. 39)}}}
+\centerline{\textbf{\Large{Rabin Bhandari(Roll No. 6)}}}
+\centerline{\textbf{\Large{Bijen Rayamajhi(Roll No. 48)}}}
+\centerline{\textbf{\Large{"}}}
+\vspace*{2mm}
+\centerline{\textbf{\Large{who carried out the project work under my supervision.}}}
+\vspace*{30mm}
+\textbf{\Large{Project Supervisior}}
+\\\\
+\\\\
+\textbf{-----------------------------------------------}
+\vspace*{2mm}
+\\
+{\textbf{\Large{Name: Amrit Dahal}}}
+\vspace*{2mm}\\
+{\textbf{\Large{Lecturer}}}
+\vspace*{2mm}\\
+{\textbf{\Large{Department of Computer Science and Engineering}}}
+
+\clearpage
+\thispagestyle{empty}
+
+\textbf{\Large{Acknowledgement}}
+\vspace*{5mm}
+
+We wish to express our sincere thanks to the Department of Computer Science and Engineering for including the COMP 207 project into our curriculum. We would like to express 
+our heartfelt gratitude to our project coordinator Ma'am Pranita Karki and our supervisor Mr. Amrit Dahal for their regular guidance and encouragement throughout the project. 
+Taking this opportunity, we would like to thank all those individuals who directly or indirectly helped us in making this project successful one be it by encouraging us 
+throughout the project or else through their valuable suggestions which we have tried our best to assimilate within our work.
+
+
+\clearpage
+\thispagestyle{empty}
+
+\section*{Abstract}
+The project ‘Decentralized Library’ proposal is drafted to meet the prerequisites to partially fulfill the COMP 207 course offered by the Department of Computer Science and Engineering at Kathmandu University. This project is designed to overcome the lack of large public Libraries in Nepal and the economic burden it puts on students as well as other people who have to buys too many books due to lack of proper book lending facility. The proposed App will act as search engine platform which will cataloguing books near the users and facilitate exchange of books between it’s users. It will include displaying a curated selection of books available for exchange as per user selected genres along with list of books the users are searching for. There would be a chat features to facilitate the exchange along with a embed map and GPS for ease of setting exchange spots. 
+
+We, the involved project members, have decided to create a WebApp that uses REST API framework in accomplishing this project by using Python and TypeScript as the main programming language. We will be using Django(Python) framework for backend and Angular(TypeScript) framework for frontend.
+\\\\
+\textbf{Keywords:} TypeScript, WebApp, frontend, backend, GPS
+
+\clearpage
+\thispagestyle{empty}
+\tableofcontents
+
+\clearpage
+\thispagestyle{empty}
+\listoffigures
+
+\clearpage
+\pagenumbering{arabic}
+\section{CHAPTER 1: INTRODUCTION}
+
+\subsection{Background}
+Even in today’s time majority of people still prefer to read paper books. For this they buy books, read them and afterwards it’s left gathering dust in the shelves. Buying books is a costly endeavour when a devoted reader goes through double digit number of books in span of a few months. This leads to both an economic burden as well as a space problem.
+\\
+Borrowing from Library could easily solve this problem but sadly Libraries are an infrastructure that is in poor quality in context of Nepal. Mostly all the Library are either a personal one or an institutional one. With institutional Library being mostly of Schools and University where course books are the focus and personal Libraries a personal collection of an individual. It is very hard to borrow books and people need to either buy books or read online pirated transcribes.
+\\
+Therefore our proposed app comes into play as a platform to lend and borrow books. With a peer to peer exchange facility, the physical need to house books is circumvented and an active local community of book readers could potentially arise.
+
+\vspace*{5mm}
+\subsection{Objectives}
+The main objective of this project is to make a virtual decentralized library where people can exchange books with each other and actually deploy it on the internet.
+\\\\
+Besides, the other objectives are listed below:
+\begin{itemize}
+    \item To circumvent the physical need to store books in a central local.
+    \item To have a robust 
+    \item To provide a book cataloguing service.
+    \item To lighten the economic burden of buying books as well as provide an alternative to book hoarding.
+    \item To promote a book reading culture.
+\end{itemize}
+
+\vspace*{5mm}
+\subsection{Motivation and Significance}
+Our project is particularly inspired by the lack of fictional books in Kathmandu University Central
+Campus Library. Further more this is a situation that is prevalent in other educational institutions
+as well. As students the economic burden of buying new books every time is a heavy burden and the
+lack of any platform to properly share books is a situation that we the team members have personally
+experienced.
+
+Further more the site Goodreads; a books cataloguing website; is a primary point of inspiration in
+tackling this project. A platform that works on local level to provide an exchange catalogue of locally
+available books is the main draw for the team to work in this project.
+
+\clearpage
+
+\section{CHAPTER 2: RELATED WORKS}
+There are similar sites that provide book cataloguing,lending or buying service.Some of such sites that
+are in use are:
+\\\\
+Some of such sites that are in use are:
+
+\subsection{GoodReads}
+\begin{figure}[h]
+    \centerline{\includegraphics[width = 90mm]{goodreads.jpg}}
+    \caption{GoodReads}
+    \label{fig}
+\end{figure}
+One of the primary experience for this project, Goodreads is a american website which provides book
+cataloguing features and is one of the mostly widely used service among book readers to keep track of
+books that they have read, are looking to read and new upcomming books.
+\vspace{10mm}
+\clearpage
+\subsection{Scribd}
+\begin{figure}[h]
+    \centerline{\includegraphics[width = 90mm]{scribd.png}}
+    \caption{Scribd}
+    \label{fig}
+\end{figure}
+An ebook and audiobook suscription service, Scribd has been refered as the ”Netflix of Books”. For
+a small suscription charge, Scribd grants acess to a millions large repository of ebooks and audiobooks.
+
+\clearpage
+
+\section{CHAPTER 3: DESIGN AND IMPLEMENTATION}
+\subsection{Architectural Design}
+To be filled.
+\clearpage
+\subsection{System Requirement Specification}
+\subsubsection{Software Requirements:}
+\begin{itemize}
+    \item \textbf{Front End Tools}
+        \begin{itemize}
+            \item The UI is created using TypeScript,CSS and HTML.
+            \item Development Tools : Angular framework
+        \end{itemize}
+    \item \textbf{Back End Tools}
+        \begin{itemize}
+            \item The backend is created using Python.
+            \item SQL or No-SQL database will be used for storing data.
+            \item Development Tools : MySQL, MongoDB, Django
+        \end{itemize}
+\end{itemize}
+
+\subsubsection{Hardware Requirements:}
+\begin{itemize}
+    \item Compatibility: (Development) Compatible with all PCs able to run python and AngularCLI.
+    \item Compatibility: (Deployment) Compatible with all servers capable of python hosting.
+    \item Compatibility: (Usage) Compatible with all PCs able to run modern Internet Browser.
+\end{itemize}
+
+\vspace*{10mm}
+\textbf{Python :} A dynamically typed multi paradigm general purpose programming language.
+\\\\
+\textbf{SQL :} Structured Query Language, an standardized programming used to maintain Relational
+databases as well as perform operations on the data in them.
+\\\\
+\textbf{Django Framework :} An open source web framework written in python that follows model-templates-
+view architecture.
+\\\\
+\textbf{Angular CLI :} The Command line interface of popular frontend web development framework Angular
+which is maintained by Google.
+
+\clearpage
+\section{CHAPTER 4: DISCUSSION AND  ACHIEVEMENT}
+
+\subsection{Methodology}
+The whole process of developing the software has been divided into following aspects:
+\begin{itemize}
+    \item Research and study
+    \item UI Design and prototyping
+    \item Core programming
+    \item Program Testing
+    \item Documentation
+\end{itemize}
+
+\subsubsection{Research and Study}
+This project being the first of the kind we have ever done, we decide to choose a subject matter that we clearly know and have experience with i.e. Database focused application . We have interacted with the various software/sites mentioned above in chapter 2 on a semi-regular basis and have experienced its strength 
+and pitfall. We are trying to provide a grass root service that we hope will take wide spread adoption.
+
+\subsubsection{UI design and Prototyping}
+The initial designs are sketched on A4 papers by our members and shared on group chat for peer review and then we use figma to design test the look of our UI before adding any frontend code to make it in SCSS.
+
+\subsubsection{Core Programming}
+The most amount of project time was  spent in this stage. We are using the Python language to write our backend program. Angular framework provides the necessary tools to create the GUI. Django (WhiteNoise plugin) is being used to serve the static webpages to the web and Django Rest API provides with get, put and update APIs to manipulate data for log In/Register (Using JWT) or to update the various other data models.
+
+\paragraph{Issues Encountered}
+\begin{itemize}
+    \item \textit{\textbf{Team Members catching COVID-19}}\\
+        After the initial design phase of the the project was complete. Half the members of the development caught COVID-19 and work was halted. This went on for some time and the issue was compounded by other academic responsibilities due to which there was periods of inactivity during development phase.
+    \item \textit{\textbf{Adapting the frontend code with framework}}\\
+        Due to part of the team members only having learned vanilla HTML and CSS, it was confusing to adapt the code written by multiple parties to comply with single page application code. 
+        one prominent example was of using anchor tag for navigation with href and Routerlink.
+    \item \textit{\textbf{Routing issue}}\\
+        Due to Django and Angular both providing webpage routing,initially it was confusing to seperate the frontend routing and backend routing. The webpages view routing was done in angular along with error handling where as API end point routing was done in django.
+    \item  \textit{\textbf{Managing Django Migrations}}
+        We initially made some IR models and went to code the application as per the design schema but managing multivalue attributes and foreign key constraints was difficult and there was alot of deviation to the initial design. Further more, due to these deviation, the data needed to be entered multile times in the database and we had to rollback the migrations and redo them. This cause issues like acidental deletion of wrong migrations and a dedlock in generation new migrations.
+        This had us repeated to this procedure.
+    \item  \textit{\textbf{Image Storage}}
+        Initially we has thought to store images as BLOB ojects after they were standardized in resolution through manipluation via Python Image Library in the database but the django framework calls for the files to be stored in the directory and it was difficult to store them. Idea to introduce MongoDB for image file storage was indroduced but due to time and code complexity of working multiople databases, it was passed over and images were simply stored in directory.
+    \item \textit{\textbf{Geolocation Features}}
+        Initially our application was supposed to have geo location ability via Open Steets API but due to the our limited understanding of converting the Geolocation co-ordinates to get a radius and the query getting more and more complex with each API. We decided to forgo the Geolocation.
+    \item \textit{\textbf{Brainstorming features to be added}}\\
+        Initially the project was on different trajectory and due to amount of time invested, team members were locked in a certain direction. The team was a newly fromed team and it took some time for internal communication between members to be smooth.
+    \item \textit{\textbf{DataBase Loading and Exporting}}
+        MySQL database wasn't being loaded via a CSV file and was saying that local files from only certain directory could be loaded or exported to. The problem was that the default specified directory was within root directory and superuser privillege was necessary to even access the directory further more we could change the directory as it requred various system setting for MySQL service to be edited as per stackover flow which we didn't understand.
+    \item \textit{\textbf{Difficulty in getting domain from mercantile hostmaster}}
+        Dispite filling forms properly multile times to get a domain, mercantile hostmaster always denied the request claiming insufficient documents. Thus domain and hosting had to be bought from Tech Himalaya.
+\end{itemize}
+\subsubsection{Program Testing}
+Unit testing was done as soon as we completed the code of a single widget to check its functioning properly. This was repeated multiple times during the development 
+period to create a robust system and once the core programming is completed, alpha testing was done to find different types of bugs or ill optimised issues.
+\paragraph{Bugs found and Debugged}
+\begin{itemize}
+    \item The CSS absoulte units (vw) were making the layout of the have horizontal scroller even when it wasn't necessary.
+    \item Chat API were not loading the json properly.
+    \item The View was not updating when the database was updated and was needing server restart.
+\end{itemize}
+\clearpage
+\subsection{Features}
+We wanted to make this a deployable project so instead of a large project, we tried to make the code robust with alot of validators and proper work.
+
+\subsubsection{FrontEnd}
+\begin{itemize}
+    \item Single Page application with Angular routing for a smooth transition between views without reloading the webpage.
+    \item Encryption of the Login/Register Information on front end to deny packet sniffing threats.
+    \item Catalogue as per genres.
+    \item Catalogue as per newly added items.
+    \item Catalogue as per author.
+\subsubsection{Backend}
+\begin{itemize}
+    \item Actual Deployment 
+    \item Custom graphical representation of chosen timeline
+    \item Information regarding available COVID hospitals in the country
+    \item Infographics to know the symptoms, prevention for the virus with helpline
+\end{itemize}
+
+\clearpage
+
+\section{CHAPTER 5: CONCLUSION AND RECOMMENDATION}
+With the constant supervision of the supervisor and hard work of team members, the project is finally complete. After this project we believe our team is 
+ready to tackle more sophisticated projects in the future.
+
+\subsection{Limitations}
+\vspace*{5mm}
+The program has the following limitations:
+\begin{itemize}
+    \item \textit{\textbf{No Geolocation}}\\
+        The project was initial designed to show recomendation based on user location but due to the Geolocation queries complexity, it was changed to display all the available content.
+    \item \textit{\textbf{Lack of channels in chat}}\\
+        We tried to actually have channels in chat so two users could connect with each other and then their messages would get saved in the database but we found it imcompatible to use channels with a REST APIs so the whole chat was remade using REST APIs.
+\end{itemize}
+\vspace*{5mm}
+\subsection{Further Enhancements}
+\vspace*{5mm}
+The following action could be untaken to improve the program.
+\begin{itemize}
+    \item \textit{\textbf{Making a proper Geolocation service application}}\\
+        None of the team members had any experience with using the Geolocation api and or the conplex queries which required trignomatric functions to work. Therefore, as we would actully like to launch this service, we would like to spend more time on learing about latitudes and longitudes and properly add the functionality.
+    \item \textit{\textbf{Making the app single language}}\\
+        Due to the confusing stacks of programming languages, we wish to either shift to a express server or make it a serverside django application.
+    \item  \textit{\textbf{Making a Mobile App}} 
+        If possible, in next semester we would like to explore mobile app and convert this application to either work as a Hybrid app or a webview app.
+\end{itemize}
+\clearpage
+
+\section{Refrences}
+\thispagestyle{empty}
+
+
+\clearpage
+\thispagestyle{empty}
+\section{Appendix}
+\thispagestyle{empty}
+\begin{figure}[h]
+    \centerline{\includegraphics[width = 190mm]{chart.png}}
+    \caption{Gant Chart}
+    \label{fig}
+\end{figure}
+\rightline{\underline{\textbf{Index}}}
+\begin{figure}[h]
+    \rightline{\includegraphics[width=15mm,height=15mm]{box.png}}
+\end{figure}
+\rightline{\underline{\textbf{Task Completed}}}
+
+\end{document}
